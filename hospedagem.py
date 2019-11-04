@@ -3,14 +3,11 @@ from basemodel import *
 from datetime import datetime
 import os
 
-class Hospedagem(Model):
+class Hospedagem(BaseModel):
     locHosp = CharField()
     nomeHosp = CharField()
     dataEntrada = DateField()
     dataSaida = DateField()
-
-    class Meta:
-        database = db
 
     def __str__(self):
         return f"\nHOSPEDAGEM\nNome hospedagem: {self.nomeHosp}\nLocal hospedagem: {self.locHosp}\nData entrada: {self.dataEntrada}\nData saída: {self.dataSaida}" 

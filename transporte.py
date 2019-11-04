@@ -2,12 +2,9 @@ from peewee import *
 from basemodel import *
 import os
 
-class Transporte(Model):
+class Transporte(BaseModel):
     tipTrans = CharField()
     alugado = CharField()
-
-    class Meta:
-        database = db
 
     def __str__(self):
         return f"\nTRANSPORTE\nTransporte: {self.tipTrans}\nAlugado: {self.alugado}" 
@@ -25,14 +22,12 @@ if __name__ == '__main__':
         print('Erro ao criar tabelas:'+ str(e))
         exit()
 
-    transporte = {
-      'tipTrans': str(input('Digite o tipo de transporte utilizado: ')),
-      'alugado' : bool(True if str(input("Já está alugado (S/N)? ")).lower() == "s" else False)
-    }
+    transporte1 = Transporte.create(tipTrans="Carro", alugado="Sim")
+    transporte2 = Transporte.create(tipTrans="Avião", alugado="Não")
+    transporte3 = Transporte.create(tipTrans="Moto", alugado="Não")
 
-    minhas_classes = []
-    minhas_classes.append(Transporte.create(**transporte))
+    minhas_classes = Transporte.select()
 
     for objeto in minhas_classes:
-        print(objeto)
-        # objeto.save() 
+        print(objeto)  
+        print('--------------------')  

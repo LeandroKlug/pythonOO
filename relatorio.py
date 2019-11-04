@@ -2,12 +2,9 @@ from peewee import *
 from basemodel import *
 import os
 
-class Relatorio(Model):
+class Relatorio(BaseModel):
     # Essa classe envia o relatório com todas as informações
     rel = CharField()
-
-    class Meta:
-        database = db
 
     def __str__(self):
         return f"\nRELATORIO\n{self.rel}"

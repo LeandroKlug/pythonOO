@@ -2,13 +2,10 @@ from peewee import *
 from basemodel import *
 import os
 
-class Viagem(Model):
+class Viagem(BaseModel):
     # Essa classe engloba todas outras classes
     # Gerando um relatório final para envio por e-mail
     trip = CharField()
-
-    class Meta:
-        database = db
 
     def __str__(self):
         return f"\nVIAGEM\n{self.trip}" 

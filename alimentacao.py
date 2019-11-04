@@ -3,15 +3,12 @@ from basemodel import *
 from datetime import datetime
 import os
 
-class Alimentacao(Model):
+class Alimentacao(BaseModel):
     locAlim = CharField()
     nomeLocAlim = CharField()
     dataAlim = DateField()
     qtdAlim = IntegerField()
-
-    class Meta:
-        database = db
-
+    
     def __str__(self):
         return f"\nALIMENTAÇÃO\nNome restaurante: {self.nomeLocAlim}\nEndereço restaurante: {self.locAlim}\nData refeição: {self.dataAlim}\nQuantidade de refeições: {self.qtdAlim}" 
 

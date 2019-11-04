@@ -2,13 +2,10 @@ from peewee import *
 from basemodel import *
 import os
 
-class Pagamento(Model):
+class Pagamento(BaseModel):
     metPag = CharField()
     valor = FloatField()
     nf = IntegerField()
-
-    class Meta:
-        database = db
 
     def __str__(self):
         return f"\nPAGAMENTO\nMétodo pagamento: {self.metPag}\nValor: R${self.valor:.2f}\nNota fiscal: {self.nf}" 

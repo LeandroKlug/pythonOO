@@ -2,16 +2,14 @@ from peewee import *
 from basemodel import *
 import os
 
-class Empresa(Model):
+class Empresa(BaseModel):
     nomeEmp = CharField()
     endEmp = CharField()
     telEmp = IntegerField()
-
-    class Meta:
-        database = db
-
+  
     def __str__(self):
         return f"\nEMPRESA\nEmpresa: {self.nomeEmp}\nEndereço {self.endEmp}\nTelefone: {str(self.telEmp)}"
+
 
 if __name__ == '__main__':
 
@@ -26,15 +24,13 @@ if __name__ == '__main__':
         print('Erro ao criar tabelas:'+ str(e))
         exit()
 
-    empresa = {
-        'nomeEmp': str(input("Digite sua empresa: ")),
-        'endEmp' : str(input("O endereço da sua empresa: ")),
-        'telEmp' : int(input("O telefone da sua empresa: "))
-    }
+    empresa1 = Empresa.create(nomeEmp="bla", endEmp="bla", telEmp="1111")
+    empresa2 = Empresa.create(nomeEmp="bla1", endEmp="bla1", telEmp="2222")
+    empresa3 = Empresa.create(nomeEmp="bla2", endEmp="bla2", telEmp="3333")
+    empresa4 = Empresa.create(nomeEmp="bla3", endEmp="bla3", telEmp="4444")
+    empresa5 = Empresa.create(nomeEmp="bla4", endEmp="bla4", telEmp="5555")
 
-    minhas_classes = []
-    minhas_classes.append(Empresa.create(**empresa))
+    minhas_classes = Empresa.select()
 
     for objeto in minhas_classes:
         print(objeto)
-        # objeto.save()    
